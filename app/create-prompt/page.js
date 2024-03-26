@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { Form } from '@components/Form';
 
 const CreatePrompt = () => {
@@ -10,6 +10,8 @@ const CreatePrompt = () => {
         prompt: '',
         tag: '',
     });
+    const router = useRouter();
+    const { data: session } = useSession();
 
     const createPrompt = async (event) => {
         event.preventDefault();
@@ -21,7 +23,7 @@ const CreatePrompt = () => {
                     method: 'POST',
                     body: JSON.stringify({
                         prompt: post.prompt,
-                        userId: session?.use.id,
+                        userId: session?.user.id,
                         tag: post.tag
                     })
                 })
