@@ -1,10 +1,14 @@
 import { Schema, model, models } from 'mongoose';
+
+// Create a new schema for the user
 const UserScheme = new Schema({
+    // Email must be unique and required
     email: {
         type: String,
         unique: [true, 'Email already exist'],
         required: [true, 'Email is required'],
     },
+    // Username required and must match regex
     username: {
         type: String,
         required: [true, 'Username is required'],
