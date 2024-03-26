@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Promptopia
 
-## Getting Started
+Promptopia is an open-source AI Prompting tool for modern world to discover, create and share creative prompts. Promptopia uses the [NextJS](https://nextjs.org) React Framework, taking advantage of the use of serveless API endpoint.
 
-First, run the development server:
+## Run Locally
+
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/hexbacon/promptopia.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go to the project directory
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+  cd promptopia
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Install dependencies
 
-## Learn More
+```bash
+  npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Start NextJS Project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+  npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Features
 
-## Deploy on Vercel
+- Light/dark mode toggle (TBW)
+- Search Funtion
+- Simple UI
+- Full Mobile Reponsibe
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Schema
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### User Schema Description
+
+The User schema represents users in the system. It includes fields such as `email`, `username`, and `image`.
+
+- `email`: Stores the email address of the user. It is unique and required for user identification.
+- `username`: Represents the username chosen by the user. It must adhere to a specific regex pattern and be unique.
+- `image`: Stores the URL of the user's profile image, allowing users to personalize their profiles.
+
+| Field    | Type   | Constraints                        | Description                                                        |
+| -------- | ------ | ---------------------------------- | ------------------------------------------------------------------ |
+| email    | String | Unique, Required                   | Email address of the user.                                         |
+| username | String | Required, Regex validation, Unique | Username of the user. Must match a specific pattern and be unique. |
+| image    | String |                                    | URL of the user's profile image.                                   |
+
+### Prompt Schema Table
+
+The Prompt schema is used to store prompts created by users. It consists of fields such as `creator`, `prompt`, and `tag`.
+
+- `creator`: Stores the ID of the user who created the prompt. It is referenced to the User schema.
+- `prompt`: Represents the text of the prompt, which is required for creating a prompt entry.
+- `tag`: Stores a tag associated with the prompt, providing additional categorization or context for the prompt.
+
+| Field   | Type                           | Constraints         | Description                                |
+| ------- | ------------------------------ | ------------------- | ------------------------------------------ |
+| creator | mongoose.Schema.Types.ObjectId | Reference to 'User' | The ID of the user who created the prompt. |
+| prompt  | String                         | Required            | The text of the prompt.                    |
+| tag     | String                         | Required            | The tag associated with the prompt.        |
+
+## API Reference
+
+#### Post a Prompt
+
+```http
+  GET /api/prompt/new
+```
+
+| Parameter | Type     | Description                  |
+| :-------- | :------- | :--------------------------- |
+| `prompt`  | `schema` | **Required**. Prompt and Tag |
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`GOOGLE_ID`
+
+`GOOGLE_CLIENT_SECRET`
+
+`MONGODB_URI`
+
+`NEXTAUTH_URL=http://localhost:3000`
+
+`NEXTAUTH_URL_INTERNAL=http://localhost:3000`
+
+`NEXTAUTH_SECRET`
