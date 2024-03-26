@@ -70,7 +70,7 @@ The Prompt schema is used to store prompts created by users. It consists of fiel
 #### Post a Prompt
 
 ```http
-  GET /api/prompt/new
+  POST /api/prompt/new
 ```
 
 | Parameter | Type     | Description                  |
