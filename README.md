@@ -77,6 +77,17 @@ The Prompt schema is used to store prompts created by users. It consists of fiel
 | :-------- | :------- | :--------------------------- |
 | `prompt`  | `schema` | **Required**. Prompt and Tag |
 
+#### Get all Prompts
+
+```http
+  POST /api/prompt
+```
+
+| Parameter | Type     | Description                  |
+| :-------- | :------- | :--------------------------- |
+| `None`  | `None` | Returns all Prompts in the DB |
+
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
