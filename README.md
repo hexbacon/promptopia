@@ -35,6 +35,30 @@ Start NextJS Project
 - Simple UI
 - Full Mobile Reponsibe
 
+## TODO
+
+#### Implement Search
+- **Search by Content:**
+  - Develop a search feature enabling users to find prompts based on their content.
+  - Allow users to input keywords or phrases for partial or complete matches in prompt text.
+  - Implement case-insensitive search functionality.
+
+- **Search by Tag:**
+  - Enable users to search for prompts by their associated tags.
+
+- **Search by Username:**
+  - Implement a feature allowing users to search for prompts created by a specific user.
+
+#### Implement Click on Tag
+- Develop functionality to allow users to click on a tag associated with a prompt.
+- Upon clicking a tag, display a list of prompts that share the same tag.
+- Ensure the interface is responsive and provides a seamless user experience.
+
+#### Implement View Other Profiles
+- Develop functionality enabling users to view profiles of other registered users.
+- Allow users to click on a username or profile picture to navigate to the respective user's profile page.
+
+
 ## Schema
 
 ### User Schema Description
