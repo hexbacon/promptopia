@@ -34,7 +34,9 @@ const EditPrompt = () => {
             }
         };
         
-        getPromptDetails(); // Call getPromptDetails only if promptId exists
+        if (promptId) {
+            getPromptDetails();
+        }
     }, [promptId]);
 
     const updatePrompt = async (event) => {
