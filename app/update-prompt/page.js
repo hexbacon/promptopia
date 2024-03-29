@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Form } from '@components/Form';
+import { Suspense } from 'react'
 
 const EditPrompt = () => {
     const [submiting, setSubmiting] = useState(false);
@@ -23,13 +24,13 @@ const EditPrompt = () => {
                 tag: data.tag
             });
         }
-        if(promptId) getPromptDetails();
-    },[promptId]);
+        if (promptId) getPromptDetails();
+    }, [promptId]);
 
     const updatePrompt = async (event) => {
         event.preventDefault();
 
-        if(!promptId) return alert("Prompt ID not found!"); 
+        if (!promptId) return alert("Prompt ID not found!");
 
         setSubmiting(true);
         try {
@@ -52,13 +53,15 @@ const EditPrompt = () => {
         }
     }
     return (
-        <Form
-            type="Edit"
-            post={post}
-            setPost={setPost}
-            submiting={submiting}
-            handleSubmit={updatePrompt}
-        />
+        <Suspense>
+            <Form
+                type="Edit"
+                post={post}
+                setPost={setPost}
+                submiting={submiting}
+                handleSubmit={updatePrompt}
+            />
+        </Suspense>
     )
 }
 

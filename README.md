@@ -133,3 +133,6 @@ To run this project, you will need to add the following environment variables to
 `NEXTAUTH_URL_INTERNAL=http://localhost:3000`
 
 `NEXTAUTH_SECRET`
+
+
+
