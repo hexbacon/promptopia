@@ -1,5 +1,7 @@
 # Promptopia
 
+![alt text](./public/assets/images/promptopia.png "Promptopia ")
+
 Promptopia is an open-source AI Prompting tool for modern world to discover, create and share creative prompts. Promptopia uses the [NextJS](https://nextjs.org) React Framework, taking advantage of the use of serveless API endpoint.
 
 ## Run Locally
@@ -30,33 +32,27 @@ Start NextJS Project
 
 ## Features
 
-- Light/dark mode toggle (TBW)
-- Search Funtion
-- Simple UI
-- Full Mobile Reponsibe
-
-## TODO
-
 #### Implement Search
 - **Search by Content:**
-  - Develop a search feature enabling users to find prompts based on their content.
-  - Allow users to input keywords or phrases for partial or complete matches in prompt text.
-  - Implement case-insensitive search functionality.
+  - Search all promopt that include the given string.
 
 - **Search by Tag:**
-  - Enable users to search for prompts by their associated tags.
+  - Search for prompts by their associated tags.
 
 - **Search by Username:**
-  - Implement a feature allowing users to search for prompts created by a specific user.
+  - Search for prompts created by a specific user.
 
 #### Implement Click on Tag
-- Develop functionality to allow users to click on a tag associated with a prompt.
 - Upon clicking a tag, display a list of prompts that share the same tag.
-- Ensure the interface is responsive and provides a seamless user experience.
 
 #### Implement View Other Profiles
-- Develop functionality enabling users to view profiles of other registered users.
 - Allow users to click on a username or profile picture to navigate to the respective user's profile page.
+
+#### Feed
+- Live Feed with recently posted prompts.
+
+#### Responsive Layout
+- Fully responsive layout to different screen sizes.
 
 
 ## Schema
@@ -111,6 +107,16 @@ The Prompt schema is used to store prompts created by users. It consists of fiel
 | :-------- | :------- | :--------------------------- |
 | `None`  | `None` | Returns all Prompts in the DB |
 
+
+#### Get all Prompts For A User
+
+```http
+  GET /api/users/[user_id]/posts
+```
+
+| Parameter | Type     | Description                  |
+| :-------- | :------- | :--------------------------- |
+| `User ID`  | `String` | Returns all Prompts for an user |
 
 ## Environment Variables
 
