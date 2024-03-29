@@ -53,6 +53,16 @@ const Feed = () => {
     setFilteredPosts(filtered);
   }
 
+  const handleTagClick = (tag) => {
+    setSearchText(tag);
+    const filtered = posts.filter((post) => {
+      let tags = post.tag.toLowerCase();
+      return tags.includes(tag.toLowerCase()); // Check if the prompt contains text or if the text containts the creator's name or tag
+    });
+    setFilteredPosts(filtered);
+  }
+
+
   // Fetching posts data on component mount
   useEffect(() => {
     const fetchPosts = async () => {
@@ -85,7 +95,7 @@ const Feed = () => {
           ? filteredPosts
           : posts
         } // Passing posts data as props to the PromptCardList component
-        handleTagClick={() => { }} // Passing a placeholder function as props to the PromptCardList component
+        handleTagClick={handleTagClick} // Passing a placeholder function as props to the PromptCardList component
       />
 
     </section>

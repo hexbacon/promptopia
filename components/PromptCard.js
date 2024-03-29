@@ -20,7 +20,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   // Function to handle profile click
   const handleProfileClick = () => {
     // Logging the post details
-    console.log(post);
+    //console.log(post);
 
     // Redirecting to the profile page of the post creator
     if (post.creator._id === session?.user.id) return router.push("/profile")
