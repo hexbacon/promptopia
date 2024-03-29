@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState, Suspense } from 'react'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { Form } from '@components/Form';
 
 const EditPrompt = () => {
