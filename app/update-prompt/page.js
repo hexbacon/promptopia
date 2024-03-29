@@ -14,8 +14,8 @@ const EditPrompt = () => {
 
     useEffect(() => {
         const getPromptDetails = async () => {
-            if (!promptId) return;
-
+            if (!promptId) return; // Check if promptId exists before proceeding
+            
             try {
                 const response = await fetch(`/api/prompt/${promptId}`);
                 if (!response.ok) {
@@ -30,7 +30,8 @@ const EditPrompt = () => {
                 console.error('Error fetching prompt details:', error);
             }
         };
-        getPromptDetails();
+        
+        getPromptDetails(); // Call getPromptDetails only if promptId exists
     }, [promptId]);
 
     const updatePrompt = async (event) => {
