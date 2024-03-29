@@ -14,7 +14,10 @@ const EditPrompt = () => {
 
     useEffect(() => {
         const getPromptDetails = async () => {
-            if (!promptId) return; // Check if promptId exists before proceeding
+            if (!promptId) {
+                alert("Prompt ID not found!");
+                return;
+            }
             
             try {
                 const response = await fetch(`/api/prompt/${promptId}`);
