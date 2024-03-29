@@ -30,10 +30,27 @@ const Feed = () => {
   // Initializing state variables
   const [searchText, setSearchText] = useState(''); // State variable to store search text
   const [posts, setPosts] = useState([]); // State variable to store posts data
+  const [filteredPosts, setFilteredPosts] = useState([]); // State variable to store posts data
 
   // Function to handle search input change
   const handleSearchChange = (e) => {
     // Implement search functionality here
+    e.preventDefault();
+
+    // Get Text from Seach input
+    const text = e.target.value;
+
+    // Set text to state variable
+    setSearchText(text);
+    //TODO: intirate over prompts
+    // Filter posts based on search text
+    const filtered = posts.filter((post) => {
+      let usernames = post.creator.username.toLowerCase(); // Get creator's usernames
+      let prompts = post.prompt.toLowerCase(); // Get prompts text
+      let tags = post.tag.toLowerCase();
+      return prompts.includes(text.toLowerCase()) || usernames.includes(text.toLowerCase()) || tags.includes(text.toLowerCase()); // Check if the prompt contains text or if the text containts the creator's name or tag
+    });
+    setFilteredPosts(filtered);
   }
 
   // Fetching posts data on component mount
@@ -64,9 +81,13 @@ const Feed = () => {
 
       {/* Rendering the PromptCardList component */}
       <PromptCardList
-        data={posts} // Passing posts data as props to the PromptCardList component
+        data={filteredPosts.length !== 0
+          ? filteredPosts
+          : posts
+        } // Passing posts data as props to the PromptCardList component
         handleTagClick={() => { }} // Passing a placeholder function as props to the PromptCardList component
       />
+
     </section>
   )
 }
